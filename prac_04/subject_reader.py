@@ -8,8 +8,8 @@ FILENAME = "subject_data.txt"
 
 def main():
     """Program to load and display subject data from file."""
-    data = load_data(FILENAME)
-    display_subject_details(data)
+    subject_data = load_data(FILENAME)
+    display_subject_details(subject_data)
 
 
 def load_data(filename=FILENAME):
@@ -32,8 +32,8 @@ def load_data(filename=FILENAME):
 
 
 def display_subject_details(data):
-    for i in data:
-        print(f"{i[0]} is taught by {i[1]} and has {i[2]} students")
+    for variable in data:
+        print(f"{variable[0]} is taught by {variable[1]} and has {variable[2]} students")
 
 
 main()
