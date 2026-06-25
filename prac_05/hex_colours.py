@@ -7,7 +7,7 @@ for i, color in enumerate(COLOR_TO_CODE):
 color = input("Select color from options: ").lower()
 while color != "":
     try:
-        print(f"{color.upper()} code: {COLOR_TO_CODE[color]}")
+        print(f"{color} code: {COLOR_TO_CODE[color]}")
     except KeyError:
         print("Invalid Color")
     color = input("Select color from options: ").lower()
