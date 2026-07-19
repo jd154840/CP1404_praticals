@@ -4,6 +4,7 @@ Actual Time:
 """
 
 from prac_07.project import Project
+import datetime
 
 FILENAME = "projects.txt"
 
@@ -27,12 +28,17 @@ def main():
             display_projects(projects)
             display_menu()
             user_input = input(">> ").upper()
+        if user_input == "F":
+            print(filter_by_date(projects))
+            display_menu()
+            user_input = input(">> ").upper()
 
 
 def display_menu():
     print("- (L)oad Projects")
     print("- (S)ave Projects")
     print("- (D)isplay Projects")
+    print("- (F)ilter Projects by Date")
     print("- (Q)uit")
 
 
@@ -66,6 +72,22 @@ def save_projects(data):
         for line in data:
             print(line, file=out_file)
     out_file.close()
+
+
+def filter_by_date(data):
+    user_date = input("Select a date: ")
+    user_dmy = user_date.split('/')
+    user_date_formatted = datetime.date(int(user_dmy[2]), int(user_dmy[1]), int(user_dmy[0]))
+    print(f"Projects to be completed after {user_date}:")
+    for project in data:
+        date = project.start_date.split('/')
+        day = int(date[0])
+        month = int(date[1])
+        year = int(date[2])
+        unpacked_date = datetime.date(year, month, day)
+        if user_date_formatted < unpacked_date:
+            print(project)
+    return user_date_formatted
 
 
 main()

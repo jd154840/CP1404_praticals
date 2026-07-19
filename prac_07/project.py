@@ -1,3 +1,6 @@
+import datetime
+
+
 class Project:
     def __init__(self, name: str, start_date: str, priority: int, cost_estimate: float, completion_percent: int):
         self.name = name
@@ -20,11 +23,12 @@ class Project:
 
 
 def testing():
-    p1 = Project("Dig", "12/2/27", 1, 13, 50)
-    p2 = Project("Fill Hole", "13/2/27", 2, 13, 0)
-    projects = [p1, p2]
-    projects.sort()
-    print(projects)
+    p1 = Project("Dig", "12/2/2027", 1, 13, 50)
+    p2 = Project("Fill Hole", "13/2/2027", 2, 13, 0)
+    # projects = [p1, p2]
+    # projects.sort()
+    # print(projects)
+    print(p1.unpack_date())
 
 
 if __name__ == "__main__":
