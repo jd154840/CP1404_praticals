@@ -1,6 +1,6 @@
 """
 Estimated Time: 45 min
-Actual Time:
+Actual Time: Ages
 """
 
 from prac_07.project import Project
@@ -32,6 +32,14 @@ def main():
             print(filter_by_date(projects))
             display_menu()
             user_input = input(">> ").upper()
+        if user_input == "U":
+            update_project(projects)
+            display_menu()
+            user_input = input(">> ").upper()
+        if user_input == "A":
+            add_project(projects)
+            display_menu()
+            user_input = input(">> ").upper()
 
 
 def display_menu():
@@ -39,6 +47,8 @@ def display_menu():
     print("- (S)ave Projects")
     print("- (D)isplay Projects")
     print("- (F)ilter Projects by Date")
+    print("- (A)dd New Project")
+    print("- (U)pdate Project")
     print("- (Q)uit")
 
 
@@ -88,6 +98,27 @@ def filter_by_date(data):
         if user_date_formatted < unpacked_date:
             print(project)
     return user_date_formatted
+
+
+def update_project(data):
+    for i, project in enumerate(data):
+        print(f"{i + 1} {project}")
+    user_input = int(input("Select Project Index to modify: "))
+    print(data[user_input - 1])
+    new_percentage = int(input("New Percentage: "))
+    data[user_input - 1].completion_percent = new_percentage
+    new_priority = int(input("New Priority: "))
+    data[user_input - 1].priority = new_priority
+    pass
+
+
+def add_project(data):
+    project_name = input("Name: ")
+    project_date = input("Date: ")
+    project_priority = int(input("Priority: "))
+    project_price = int(input("Price: "))
+    project_completion = int(input("Completion %: "))
+    data.append(Project(project_name, project_date, project_priority, project_price, project_completion))
 
 
 main()
